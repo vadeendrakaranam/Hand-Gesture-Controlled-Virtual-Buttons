@@ -1,0 +1,33 @@
+const int greenLED = 8;
+const int buzzer = 9;
+const int blueLED = 10;
+
+void setup() {
+  pinMode(greenLED, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(blueLED, OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char command = Serial.read();
+
+    if (command == 'G') {
+      digitalWrite(greenLED, HIGH);
+      delay(500);
+      digitalWrite(greenLED, LOW);
+    } 
+    else if (command == 'B') {
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
+    }
+    else if (command == 'L') {
+      digitalWrite(blueLED, HIGH);
+      delay(500);
+      digitalWrite(blueLED, LOW);
+    }
+  }
+}
